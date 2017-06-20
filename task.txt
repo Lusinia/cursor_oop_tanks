@@ -1,0 +1,18 @@
+task "2d game" (can be done in team)
+the jQuery should be used (required)
+the Underscore should be used as well
+the OOP should be used
+no pre/post processors, only plain css & html
+the fps (frames per second) should be optimized
+the map should be generated from map-object (and you need to provide few maps for demonstration)
+var map = {...}
+you should provide ability to change map in realtime (by user clicking no change-map button)
+the player element should be able to move by pressing UP/DOWN/LEFT/RIGHT keyboard keys
+also, the player element should have NO possibility to move over the wall-elements
+no fire action, only movement
+the sound effects should be implemented
+you need to made a research & choose the appropriate library for that
+
+The code should be submitted to github gh-pages, and link to game should be provided.
+The code SHOULD pass the jslint & jshint validations.
+Team will get "-1" point for result estimate in case if submitted code will have "errors" (warnings are ok).
