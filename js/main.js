@@ -8,11 +8,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var that = this;
         var id = Math.random();
         this.id = id;
-
+        console.log(' that.weight ', weight);
         function createUnit(position, weight) {
             var tank = document.createElement('div');
             tank.classList.add('tank');
             tank.style.transition = 'all 0.5s linear';
+            tank.style.transformOrigin = 'center center';
             console.log(tank);
             switch (position) {
                 case 'left':
@@ -66,6 +67,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
         };
         this.ride = function () {
+            function speed() {
+                console.log('weight', weight);
+                var speed;
+                switch (weight) {
+                    case 'light':
+                        speed = '100';
+                        break;
+                    case 'medium':
+                        speed = '300';
+                        break;
+                    case 'hard':
+                        speed = '500';
+                        break;
+                }
+                return speed;
+            }
 
             function randomDirection() {
                 var chooseSide = Math.round(Math.random() * 3);
@@ -107,10 +124,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
             var tank = $('body').find("div[data-id='" + that.id + "']")[0];
-            var elemOffsetTop = tank.offsetTop + tank.offsetHeight;
-            var elemOffsetLeft = tank.offsetLeft + tank.offsetWidth;
-            var docHeight = ($(document).height() - tank.offsetHeight);
-            var docWidth = ($(document).width() - tank.offsetWidth);
 
             function isHit() {
                 var elem = $('body').find("div[data-id='" + that.id + "']");
@@ -145,21 +158,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 tank.style.top = (parseInt(tank.style.top) + 1) + '%';
             }
 
-            function speed(weight) {
-                var speed;
-                switch (weight) {
-                    case 'light':
-                        speed = '100';
-                        break;
-                    case 'medium':
-                        speed = '300';
-                        break;
-                    case 'hard':
-                        speed = '500';
-                        break;
-                }
-            return speed;
-            }
 
             (function frame() {
 
@@ -167,99 +165,118 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 var elem = $(tank);
                 var end = false;
                 direction = randomDirection();
-                console.log(end);
-                console.log(' speed() ',  speed(that.weight));
-                console.log(' that.weight ',  that.weight);
-                console.log(direction);
+
+
                 switch (direction) {
                     case "bottom":
                         rotate('bottom');
-                        var bottom = setInterval(moveBottom, speed(that.weight));
-                        if ((parseInt(tank.style.top) == ($('#field ').height() - 50))) {
-                            clearInterval(bottom);
-                            direction = randomDirection();
-                            frame(direction);
-                            end = true;
-                            return;
-                        }
+                        var bottom = setInterval(function () {
+                            moveBottom();
+
+                            if (isHit() || parseInt(tank.offsetTop) > ($('#field ').offset().top + $('#field ').height() - 60)) {
+                                tank.style.top = parseInt(tank.style.top) - 5 + '%';
+                                clearInterval(bottom);
+                                direction = randomDirection();
+                                frame(direction);
+                                end = true;
+                                return;
+                            }
+                        }, 50);
                         break;
                     case "top":
                         rotate('top');
-                        var top = setInterval(moveTop, speed(weight));
-                        if (parseInt(tank.style.top) <= '5' || isHit(elem)) {
-                            console.log('')
-                            clearInterval(top);
-                            direction = randomDirection();
-                            frame(direction);
-                            end = true;
-                            return;
-                        }
+                        var top = setInterval(function () {
+                            moveTop();
+                            if (isHit() || parseInt(tank.offsetTop) <= 5) {
+                                tank.style.top = parseInt(tank.style.top) + 5 + '%';
+
+                                clearInterval(top);
+                                direction = randomDirection();
+                                frame(direction);
+                                end = true;
+                                return;
+                            }
+                        }, 50);
                         break;
                     case "left":
                         rotate('left');
-                        var left = setInterval(moveLeft, speed(weight));
-                        if (parseInt(tank.style.left) < (($('#field ').width() / 2)- 20) ) {
-                            console.log('left',(parseInt(tank.style.left) < ($(document).width() - ($('#field ').width() / 2))), ' isHit(elem)', isHit(elem));
-                            clearInterval(left);
-                            direction = randomDirection();
-                            frame(direction);
-                            end = true;
-                            return;
+                        var left = setInterval(function () {
+                            moveLeft();
 
-                        }
+                            if (isHit() || parseInt(tank.offsetLeft) <= ($('#field ').offset().left - 150 )) {
+                                tank.style.left = parseInt(tank.style.left) + 1 + '%';
+
+                                clearInterval(left);
+                                direction = randomDirection();
+                                frame(direction);
+                                end = true;
+                                return;
+                            }
+
+                        }, 50);
+
                         break;
                     case "right":
                         rotate('right');
-                        var right = setInterval(moveRight, speed(weight));
-                        if (parseInt(tank.style.left) >= (($(document).width() - ($('#field ').width() / 2) - 50)  )) {
-                            clearInterval(right);
 
-                            end = true;
-                            frame(direction);
-                            return;
+                        var right = setInterval(function () {
+                            moveRight();
 
-                        }
+                            if (isHit() || parseInt(tank.offsetLeft) > ( $('#field').width() - 100)) {
+                                tank.style.left = parseInt(tank.style.left) - 1 + '%';
+
+                                clearInterval(right);
+                                direction = randomDirection();
+                                frame(direction);
+                                end = true;
+                                return;
+                            }
+                        }, 50);
+
                         break;
                 }
                 if (end) {
                     console.log('end', end)
                 }
-
             })()
 
-
         };
+        this.createButtleField = function (bots) {
+            var tank;
+            var oneSort = Math.floor(bots/3);
+            var divided = oneSort % 3;
+            for (var i = 0; i <= oneSort; i++) {
+                tank = new Tank();
+                tank.create('center', 'light');
+                tank.ride();
+            }
+            for (var i = 0; i <= oneSort; i++) {
+                tank = new Tank();
+                tank.create('left', 'medium');
+                tank.ride();
+            }
+            for (var i = 0; i <= oneSort+divided; i++) {
+                tank = new Tank();
+                tank.create('right', 'hard');
+                tank.ride();
+            }
+        }
     }
 
 
- //   var tank = new Tank();
-  //  tank.create('center', 'light');
-   // tank.ride();
-    // var tank2 = new Tank();
-    // tank2.create('left', 'hard');
-    // tank2.ride();
-    // var tank2 = new Tank('right', 'medium').create().ride();
-    // var tank3 = new Tank('left', 'hard').create().ride();
+    $('body').on('keydown', function (e) {
+        if (e.keyCode == 13) {
+            setTimeout(function () {
+                $('.main').css('display', 'block');
+            }, 500);
+        }
+    });
 
+    $('.start').on('click', function () {
+        var number = $('#bots').val();
+        console.log(number);
+        var tank = new Tank().createButtleField(number);
+    });
 
 });
-// function repeatAnim(){
-//     return new  Promise(function(resolve, reject) {
-//         var random = randomDirection();
-//         animation(random);
-//           resolve();
-//     }).then(function( ){
-//         var random = randomDirection();
-//
-//         animation(random);
-//     })
 
-//  repeatAnim();
-//  Promise.resolve().then(function resolver() {
-//      var random = randomDirection();
-//     return rotate(random)
-//         .then(animation(random))
-//         .then(resolver);
-// }).catch(function (error) {
-//     console.log("Error: " + error);
-// })
