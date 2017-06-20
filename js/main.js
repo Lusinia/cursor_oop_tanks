@@ -135,9 +135,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         isHitBlock = true;
                     }
                 }
-                if (isHitBlock) {
-                    console.log('isHitBlock ', isHitBlock);
-                }
+
                 return isHitBlock;
             }
 

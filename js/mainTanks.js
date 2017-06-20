@@ -74,27 +74,27 @@ function Ruler(num) {
 
             function rotate(dir) {
              var back;
-
+    console.log(that.number)
                 switch (dir) {
-                    case "bottom":  //  проверить какой танк первый или второй и потом дать ему нужный фон -- todo
-                        back =    "./img/bottom/main2.png";
-                        el.style.background = 'url(' + back + ')';
-                        el.style.backgrounSize=  'cover';
+                    case "bottom":
+                        back =  that.number == 1 ? "./img/bottom/main1.png" :  "./img/bottom/main2.png";
+                         el.style.background = 'url(' + back + ')';
+                        el.style.backgroundSize=  'cover';
                         break;
                     case "top":
-                        back =    "./img/bottom/main2.png";
+                        back =  that.number == 1 ? "./img/top/main1.png" :  "./img/top/main2.png";
                         el.style.background = 'url(' + back + ')';
-                        el.style.backgrounSize=  'cover';
+                        el.style.backgroundSize=  'cover';
                         break;
                     case "left":
-                        back =    "./img/bottom/main2.png";
+                        back =  that.number == 1 ? "./img/left/main1.png" :  "./img/left/main2.png";
                         el.style.background = 'url(' + back + ')';
-                        el.style.backgrounSize=  'cover';
+                        el.style.backgroundSize=  'cover';
                         break;
                     case "right":
-                        back =    "./img/bottom/main2.png";
+                        back =  that.number == 1 ? "./img/right/main1.png" :  "./img/right/main2.png";
                         el.style.background = 'url(' + back + ')';
-                        el.style.backgrounSize=  'cover';
+                        el.style.backgroundSize=  'cover';
                         break;
                 }
             }
