@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0779118b-84a6-432a-af70-a1617413b9f2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/mainTanks.js" afterPath="$PROJECT_DIR$/js/mainTanks.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,22 +30,21 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="649">
+            <state relative-caret-position="514">
               <caret line="142" column="34" lean-forward="false" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+            <state relative-caret-position="358">
+              <caret line="164" column="47" lean-forward="false" selection-start-line="164" selection-start-column="47" selection-end-line="164" selection-end-column="47" />
               <folding>
                 <element signature="e#2087#2253#0" expanded="false" />
                 <element signature="e#2842#3420#0" expanded="false" />
-                <element signature="e#3455#4115#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -55,8 +53,8 @@
       <file leaf-file-name="mapBuilder.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/mapBuilder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+            <state relative-caret-position="1168">
+              <caret line="159" column="13" lean-forward="true" selection-start-line="159" selection-start-column="13" selection-end-line="159" selection-end-column="13" />
               <folding>
                 <element signature="n#!!doc;n#Block#0" expanded="false" />
               </folding>
@@ -74,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainTanks.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mainTanks.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/mainTanks.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="94" column="90" lean-forward="false" selection-start-line="94" selection-start-column="90" selection-end-line="94" selection-end-column="90" />
+            <state relative-caret-position="330">
+              <caret line="81" column="58" lean-forward="true" selection-start-line="80" selection-start-column="23" selection-end-line="81" selection-end-column="58" />
               <folding>
                 <element signature="n#!!doc;n#Ruler#0" expanded="false" />
                 <marker date="1497989206802" expanded="true" signature="6016:6041" ph="..." />
@@ -117,8 +115,8 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/mapBuilder.js" />
         <option value="$PROJECT_DIR$/css/main.css" />
-        <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/js/mainTanks.js" />
+        <option value="$PROJECT_DIR$/js/main.js" />
       </list>
     </option>
   </component>
@@ -204,7 +202,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="map" />
+              <option name="myItemId" value="bottom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -330,12 +328,12 @@
       <workItem from="1497866852453" duration="5292000" />
       <workItem from="1497887121122" duration="10809000" />
       <workItem from="1497941337833" duration="34971000" />
-      <workItem from="1497987135172" duration="2069000" />
+      <workItem from="1497987135172" duration="2441000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119239000" />
+    <option name="totallyTimeSpent" value="119611000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1366" height="709" extended-state="6" />
@@ -411,7 +409,6 @@
           <folding>
             <element signature="e#2087#2253#0" expanded="false" />
             <element signature="e#2842#3420#0" expanded="false" />
-            <element signature="e#3455#4115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -469,7 +466,6 @@
           <folding>
             <element signature="e#2087#2253#0" expanded="false" />
             <element signature="e#2842#3420#0" expanded="false" />
-            <element signature="e#3455#4115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -498,7 +494,6 @@
           <folding>
             <element signature="e#2087#2253#0" expanded="false" />
             <element signature="e#2842#3420#0" expanded="false" />
-            <element signature="e#3455#4115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -527,7 +522,6 @@
           <folding>
             <element signature="e#2087#2253#0" expanded="false" />
             <element signature="e#2842#3420#0" expanded="false" />
-            <element signature="e#3455#4115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -555,7 +549,6 @@
           <folding>
             <element signature="e#2087#2253#0" expanded="false" />
             <element signature="e#2842#3420#0" expanded="false" />
-            <element signature="e#3455#4115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -584,7 +577,6 @@
           <folding>
             <element signature="e#2087#2253#0" expanded="false" />
             <element signature="e#2842#3420#0" expanded="false" />
-            <element signature="e#3455#4115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -613,7 +605,6 @@
           <folding>
             <element signature="e#2087#2253#0" expanded="false" />
             <element signature="e#2842#3420#0" expanded="false" />
-            <element signature="e#3455#4115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -641,7 +632,6 @@
           <folding>
             <element signature="e#2087#2253#0" expanded="false" />
             <element signature="e#2842#3420#0" expanded="false" />
-            <element signature="e#3455#4115#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -684,16 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/mapBuilder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc;n#Block#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -702,9 +682,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/mapBuilder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1168">
+          <caret line="159" column="13" lean-forward="true" selection-start-line="159" selection-start-column="13" selection-end-line="159" selection-end-column="13" />
+          <folding>
+            <element signature="n#!!doc;n#Block#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/mainTanks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="81" column="58" lean-forward="true" selection-start-line="80" selection-start-column="23" selection-end-line="81" selection-end-column="58" />
+          <folding>
+            <element signature="n#!!doc;n#Ruler#0" expanded="false" />
+            <marker date="1497989206802" expanded="true" signature="6016:6041" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
+        <state relative-caret-position="514">
           <caret line="142" column="34" lean-forward="false" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
           <folding />
         </state>
@@ -712,23 +713,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+        <state relative-caret-position="358">
+          <caret line="164" column="47" lean-forward="false" selection-start-line="164" selection-start-column="47" selection-end-line="164" selection-end-column="47" />
           <folding>
             <element signature="e#2087#2253#0" expanded="false" />
             <element signature="e#2842#3420#0" expanded="false" />
-            <element signature="e#3455#4115#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/mainTanks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="94" column="90" lean-forward="false" selection-start-line="94" selection-start-column="90" selection-end-line="94" selection-end-column="90" />
-          <folding>
-            <element signature="n#!!doc;n#Ruler#0" expanded="false" />
-            <marker date="1497989206802" expanded="true" signature="6016:6041" ph="..." />
           </folding>
         </state>
       </provider>

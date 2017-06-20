@@ -106,18 +106,68 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
             function rotate(dir) {
                 var tank = $('body').find("div[data-id='" + that.id + "']")[0];
+                console.log(tank.getAttribute('data-weight'));
                 switch (dir) {
+
                     case "bottom":
-                        tank.style.transform = "rotate(180deg)";
-                        break;
+                        if (tank.getAttribute('data-weight') == 'light') {
+                            back = "./img/bottom/tank.png"
+                        }
+                        else if (tank.getAttribute('data-weight') == 'medium') {
+                            back = "./img/bottom/tank1.png"
+                        }
+                        else if (tank.getAttribute('data-weight') == 'hard') {
+                            back = "./img/bottom/tank2.png"
+                        }
+
+                        tank.style.background = 'url(' + back + ')';
+                        tank.style.backgroundSize = 'cover';
+
+                         break;
                     case "top":
-                        tank.style.transform = "rotate( 0deg)";
+                        if (tank.getAttribute('data-weight') == 'light') {
+                            back = "./img/top/tank.png"
+                        }
+                        else if (tank.getAttribute('data-weight') == 'medium') {
+                            back = "./img/top/tank1.png"
+                        }
+                        else if (tank.getAttribute('data-weight') == 'hard') {
+                            back = "./img/top/tank2.png"
+                        }
+
+                        tank.style.background = 'url(' + back + ')';
+                        tank.style.backgroundSize = 'cover';
+
                         break;
                     case "left":
-                        tank.style.transform = "rotate(-90deg)";
+                        if (tank.getAttribute('data-weight') == 'light') {
+                            back = "./img/left/tank.png"
+                        }
+                        else if (tank.getAttribute('data-weight') == 'medium') {
+                            back = "./img/left/tank1.png"
+                        }
+                        else if (tank.getAttribute('data-weight') == 'hard') {
+                            back = "./img/left/tank2.png"
+                        }
+
+                        tank.style.background = 'url(' + back + ')';
+                        tank.style.backgroundSize = 'cover';
+
                         break;
                     case "right":
-                        tank.style.transform = "rotate(90deg)";
+                        if (tank.getAttribute('data-weight') == 'light') {
+                            back = "./img/right/tank.png"
+                        }
+                        else if (tank.getAttribute('data-weight') == 'medium') {
+                            back = "./img/right/tank1.png"
+                        }
+                        else if (tank.getAttribute('data-weight') == 'hard') {
+                            back = "./img/right/tank2.png"
+                        }
+
+                        tank.style.background = 'url(' + back + ')';
+                        tank.style.backgroundSize = 'cover';
+
                         break;
                 }
             }
@@ -241,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         };
         this.createButtleField = function (bots) {
             var tank;
-            var oneSort = Math.floor(bots/3);
+            var oneSort = Math.floor(bots / 3);
             var divided = oneSort % 3;
             for (var i = 0; i <= oneSort; i++) {
                 tank = new Tank();
@@ -253,7 +303,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 tank.create('left', 'medium');
                 tank.ride();
             }
-            for (var i = 0; i <= oneSort+divided; i++) {
+            for (var i = 0; i <= oneSort + divided; i++) {
                 tank = new Tank();
                 tank.create('right', 'hard');
                 tank.ride();
