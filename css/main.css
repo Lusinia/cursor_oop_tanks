@@ -127,20 +127,20 @@ li.item {
 
 [data-weight="light"] {
     transition: all 0.2s linear;
-    background: url("../img/tank.png");
+    background: url("../img/bottom/tank.png");
     background-size: cover;
 }
 
 [data-weight="medium"] {
     transition: all 0.5s linear;
-    background: url("../img/tank1.png");
+    background: url("../img/bottom/tank1.png");
     background-size: cover;
 
 }
 
 [data-weight="hard"] {
     transition: all 0.5s linear;
-    background: url("../img/tank2.png");
+    background: url("../img/bottom/tank2.png");
     background-size: cover;
 }
 

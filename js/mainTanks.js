@@ -24,7 +24,7 @@ function Ruler(num) {
 
     this.add = function () {
         var left = num == 1 ? "205px" : "400px";
-        var back = num == 1 ? "./img/main1.png" : "./img/main2.png";
+        var back = num == 1 ? "./img/top/main1.png" : "./img/top/main2.png";
         var tank = document.createElement('div');
         var tankStyles = {
             'top': '460px',
@@ -73,19 +73,28 @@ function Ruler(num) {
             }
 
             function rotate(dir) {
+             var back;
 
                 switch (dir) {
-                    case "bottom":
-                        el.style.transform = "rotate(180deg)";
+                    case "bottom":  //  проверить какой танк первый или второй и потом дать ему нужный фон -- todo
+                        back =    "./img/bottom/main2.png";
+                        el.style.background = 'url(' + back + ')';
+                        el.style.backgrounSize=  'cover';
                         break;
                     case "top":
-                        el.style.transform = "rotate( 0deg)";
+                        back =    "./img/bottom/main2.png";
+                        el.style.background = 'url(' + back + ')';
+                        el.style.backgrounSize=  'cover';
                         break;
                     case "left":
-                        el.style.transform = "rotate(-90deg)";
+                        back =    "./img/bottom/main2.png";
+                        el.style.background = 'url(' + back + ')';
+                        el.style.backgrounSize=  'cover';
                         break;
                     case "right":
-                        el.style.transform = "rotate(90deg)";
+                        back =    "./img/bottom/main2.png";
+                        el.style.background = 'url(' + back + ')';
+                        el.style.backgrounSize=  'cover';
                         break;
                 }
             }
@@ -166,7 +175,4 @@ function Ruler(num) {
   new Ruler(1).create(1);
   new Ruler(2).create(2);
 
-
-// var tank2 = new Ruler(2);
-// tank2.create(2);
 

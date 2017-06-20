@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         var left = setInterval(function () {
                             moveLeft();
 
-                            if (isHit() || parseInt(tank.offsetLeft) <= ($('#field ').offset().left - 150 )) {
+                            if (isHit() || (parseInt(tank.offsetLeft) <= ($('#field ').offset().left - 10 ))) {
                                 tank.style.left = parseInt(tank.style.left) + 1 + '%';
 
                                 clearInterval(left);
