@@ -87,7 +87,6 @@ li.item {
     left: 0;
     top: 0;
     display: block;
-    float: left;
     border: 2px solid #333333;
     position: relative;
     background: #000;
