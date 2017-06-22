@@ -211,7 +211,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                 var tank = $('body').find("div[data-id='" + that.id + "']")[0];
                 var elem = $(tank);
-                var end = false;
                 direction = randomDirection();
 
                 switch (direction) {
@@ -219,13 +218,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         rotate('bottom');
                         var bottom = setInterval(function () {
                             moveBottom();
-
                             if (isHit() || parseInt(tank.offsetTop) > ($('#field ').height() - 60)) {
                                 tank.style.top = parseInt(tank.style.top) - 1 + '%';
                                 clearInterval(bottom);
                                 direction = randomDirection();
                                 frame(direction);
-                                end = true;
                                 return;
                             }
                         }, 100);
@@ -234,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         rotate('top');
                         var top = setInterval(function () {
                             moveTop();
-                            if (isHit() || (tank.style.top == '2%')) {
+                            if (isHit() || (parseInt(tank.style.top) <= 1)) {
                                 tank.style.top = '2%';
                                 clearInterval(top);
                                 direction = randomDirection();
