@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var that = this;
         var id = Math.random();
         this.id = id;
-        console.log(' that.weight ', weight);
         function createUnit(position, weight) {
             var tank = document.createElement('div');
             tank.classList.add('tank');
@@ -27,12 +26,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     tank.setAttribute('data-side', 'center');
                     break;
                 case 'right':
-                    tank.style.left = '98%';
+                    tank.style.left = '95%';
                     tank.style.top = '2px';
                     tank.setAttribute('data-side', 'right');
                     break;
             }
-            console.log(weight);
+            console.log('weight', weight);
 
             switch (weight) {
                 case 'light':
@@ -51,6 +50,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
             return tank
         }
 
+        function speed() {
+            console.log('weight', weight);
+            var speed;
+            switch (weight) {
+                case 'light':
+                    speed = '100';
+                    break;
+                case 'medium':
+                    speed = '300';
+                    break;
+                case 'hard':
+                    speed = '500';
+                    break;
+            }
+            return speed;
+        }
+
 
         this.create = function (position, weight) {
             createUnit(position, weight);
@@ -66,23 +82,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 speed: this.speed
             }
         };
-        this.ride = function () {
-            function speed() {
-                console.log('weight', weight);
-                var speed;
-                switch (weight) {
-                    case 'light':
-                        speed = '100';
-                        break;
-                    case 'medium':
-                        speed = '300';
-                        break;
-                    case 'hard':
-                        speed = '500';
-                        break;
-                }
-                return speed;
-            }
+        this.ride = function (speed) {
+
 
             function randomDirection() {
                 var chooseSide = Math.round(Math.random() * 3);
@@ -106,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
             function rotate(dir) {
                 var tank = $('body').find("div[data-id='" + that.id + "']")[0];
-                console.log(tank.getAttribute('data-weight'));
                 switch (dir) {
 
                     case "bottom":
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         tank.style.background = 'url(' + back + ')';
                         tank.style.backgroundSize = 'cover';
 
-                         break;
+                        break;
                     case "top":
                         if (tank.getAttribute('data-weight') == 'light') {
                             back = "./img/top/tank.png"
@@ -176,12 +176,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
             var tank = $('body').find("div[data-id='" + that.id + "']")[0];
 
             function isHit() {
-                var elem = $('body').find("div[data-id='" + that.id + "']");
+                var objectTank = $('body').find("div[data-id='" + that.id + "']");
                 var map = $('.block');
                 var isHitBlock = false;
                 for (var i = 0; i < map.length; i++) {
                     var block = $(map[i]);
-                    if (elem.objectHitTest({"object": block, "transparency": true})) {
+                    if (objectTank.objectHitTest({"object": block, "transparency": true})) {
                         isHitBlock = true;
                     }
                 }
@@ -214,54 +214,48 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 var end = false;
                 direction = randomDirection();
 
-
                 switch (direction) {
                     case "bottom":
                         rotate('bottom');
                         var bottom = setInterval(function () {
                             moveBottom();
 
-                            if (isHit() || parseInt(tank.offsetTop) > ($('#field ').offset().top + $('#field ').height() - 60)) {
-                                tank.style.top = parseInt(tank.style.top) - 5 + '%';
+                            if (isHit() || parseInt(tank.offsetTop) > ($('#field ').height() - 60)) {
+                                tank.style.top = parseInt(tank.style.top) - 1 + '%';
                                 clearInterval(bottom);
                                 direction = randomDirection();
                                 frame(direction);
                                 end = true;
                                 return;
                             }
-                        }, 50);
+                        }, 100);
                         break;
                     case "top":
                         rotate('top');
                         var top = setInterval(function () {
                             moveTop();
-                            if (isHit() || parseInt(tank.offsetTop) <= 5) {
-                                tank.style.top = parseInt(tank.style.top) + 5 + '%';
-
+                            if (isHit() || (tank.style.top == '2%')) {
+                                tank.style.top = '2%';
                                 clearInterval(top);
                                 direction = randomDirection();
                                 frame(direction);
-                                end = true;
                                 return;
                             }
-                        }, 50);
+                        }, 100);
                         break;
                     case "left":
                         rotate('left');
                         var left = setInterval(function () {
                             moveLeft();
-
-                            if (isHit() || (parseInt(tank.offsetLeft) <= ($('#field ').offset().left - 10 ))) {
+                            if (isHit() || (tank.offsetLeft <= 30 )) {
                                 tank.style.left = parseInt(tank.style.left) + 1 + '%';
-
                                 clearInterval(left);
                                 direction = randomDirection();
                                 frame(direction);
-                                end = true;
                                 return;
                             }
 
-                        }, 50);
+                        }, 100);
 
                         break;
                     case "right":
@@ -269,27 +263,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                         var right = setInterval(function () {
                             moveRight();
-
-                            if (isHit() || parseInt(tank.offsetLeft) > ( $('#field').width() - 100)) {
+                            if (isHit() || (tank.style.left >= '98.5%')) {
                                 tank.style.left = parseInt(tank.style.left) - 1 + '%';
-
                                 clearInterval(right);
                                 direction = randomDirection();
                                 frame(direction);
-                                end = true;
                                 return;
                             }
-                        }, 50);
+                        }, 100);
 
                         break;
                 }
-                if (end) {
-                    console.log('end', end)
-                }
+
             })()
 
         };
         this.createButtleField = function (bots) {
+
             var tank;
             var oneSort = Math.floor(bots / 3);
             var divided = oneSort % 3;
@@ -322,7 +312,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     $('.start').on('click', function () {
         var number = $('#bots').val();
-        console.log(number);
         var tank = new Tank().createButtleField(number);
     });
 

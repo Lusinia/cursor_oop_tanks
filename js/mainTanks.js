@@ -73,28 +73,28 @@ function Ruler(num) {
             }
 
             function rotate(dir) {
-             var back;
-    console.log(that.number)
+                var back;
+                console.log(that.number)
                 switch (dir) {
                     case "bottom":
-                        back =  that.number == 1 ? "./img/bottom/main1.png" :  "./img/bottom/main2.png";
-                         el.style.background = 'url(' + back + ')';
-                        el.style.backgroundSize=  'cover';
+                        back = that.number == 1 ? "./img/bottom/main1.png" : "./img/bottom/main2.png";
+                        el.style.background = 'url(' + back + ')';
+                        el.style.backgroundSize = 'cover';
                         break;
                     case "top":
-                        back =  that.number == 1 ? "./img/top/main1.png" :  "./img/top/main2.png";
+                        back = that.number == 1 ? "./img/top/main1.png" : "./img/top/main2.png";
                         el.style.background = 'url(' + back + ')';
-                        el.style.backgroundSize=  'cover';
+                        el.style.backgroundSize = 'cover';
                         break;
                     case "left":
-                        back =  that.number == 1 ? "./img/left/main1.png" :  "./img/left/main2.png";
+                        back = that.number == 1 ? "./img/left/main1.png" : "./img/left/main2.png";
                         el.style.background = 'url(' + back + ')';
-                        el.style.backgroundSize=  'cover';
+                        el.style.backgroundSize = 'cover';
                         break;
                     case "right":
-                        back =  that.number == 1 ? "./img/right/main1.png" :  "./img/right/main2.png";
+                        back = that.number == 1 ? "./img/right/main1.png" : "./img/right/main2.png";
                         el.style.background = 'url(' + back + ')';
-                        el.style.backgroundSize=  'cover';
+                        el.style.backgroundSize = 'cover';
                         break;
                 }
             }
@@ -120,7 +120,7 @@ function Ruler(num) {
                     setTimeout(function () {
                         el.style.left = (parseInt(el.style.left) + 5) + 'px';
                         if (isHit()) {
-                            el.style.left = parseInt(el.style.left) - 15 + 'px';
+                            el.style.left = parseInt(el.style.left) - 10 + 'px';
                         }
                     }, 100)
 
@@ -136,7 +136,6 @@ function Ruler(num) {
                     }, 100)
 
 
-
                 } else if (e.keyCode == KEYCODE_DOWN) {
                     direction = 'bottom';
                     rotate(direction);
@@ -149,19 +148,31 @@ function Ruler(num) {
 
 
                 }
+                console.log(el.offsetLeft);
                 if (el.offsetTop < 0) {
                     el.style.top = '0px';
-                } else if (parseInt(el.style.top) >= ($('#field').height() - 30)) {
+                } else if (el.offsetTop >= ($('#field').height() - 50)) {
                     el.style.top = $('#field').height() - 45 + 'px';
-                } else if (parseInt(el.style.left) < 2) {
+                } else if (el.offsetLeft < 0) {
                     el.style.left = '2px';
-                } else if (parseInt(el.style.left) > (  $('#field').width() )) {
+                } else if (el.offsetLeft >= ($('#field').width() - 50 )) {
                     el.style.left = $('#field').width() - 60 + 'px';
                 }
 
-                console.log(parseInt(el.style.left), $(el).offset().left)
+                //    console.log(parseInt(el.style.left), $(el).offset().left)
 
             })()
+            /*top: 0;
+             left: 0;
+             ------
+             top: calc(100% - widthTank);
+             left: 0;
+             ------
+             top: 0;
+             left: calc(100% - widthTank);
+             ------
+             top: calc(100% - widthTank);
+             left: calc(100% - widthTank);*/
 
         };
     };
@@ -172,7 +183,7 @@ function Ruler(num) {
 
     }
 }
-  new Ruler(1).create(1);
-  new Ruler(2).create(2);
+new Ruler(1).create(1);
+new Ruler(2).create(2);
 
 
