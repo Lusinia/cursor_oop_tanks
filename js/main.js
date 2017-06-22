@@ -171,10 +171,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         break;
                 }
             }
-
-
             var tank = $('body').find("div[data-id='" + that.id + "']")[0];
 
+            var isIntersects = {
+                'top': 0,
+                'bottom': 0,
+                'left': 0,
+                'right': 0
+            };
             function isHit() {
                 var objectTank = $('body').find("div[data-id='" + that.id + "']");
                 var map = $('.block');
@@ -213,16 +217,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 var elem = $(tank);
                 direction = randomDirection();
 
+
                 switch (direction) {
                     case "bottom":
                         rotate('bottom');
                         var bottom = setInterval(function () {
                             moveBottom();
-                            if (isHit() || parseInt(tank.offsetTop) > ($('#field ').height() - 60)) {
+                            if(isHit()){
+                                isIntersects.bottom = 1;
+                                isIntersects.top = 0;
+                            }
+                            if( isIntersects.bottom = 1){
+                                clearInterval(bottom);
+                            }
+                            if (parseInt(tank.offsetTop) > ($('#field ').height() - 60)) {
                                 tank.style.top = parseInt(tank.style.top) - 1 + '%';
                                 clearInterval(bottom);
-                                direction = randomDirection();
-                                frame(direction);
+                                 frame(direction);
                                 return;
                             }
                         }, 100);
@@ -231,7 +242,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         rotate('top');
                         var top = setInterval(function () {
                             moveTop();
-                            if (isHit() || (parseInt(tank.style.top) <= 1)) {
+                            if(isHit()){
+                                isIntersects.bottom = 0;
+                                isIntersects.top = 1;
+                            }
+                            if( isIntersects.top = 1){
+                                clearInterval(top);
+                            }
+                            if ((parseInt(tank.style.top) <= 1)) {
                                 tank.style.top = '2%';
                                 clearInterval(top);
                                 direction = randomDirection();
@@ -244,7 +262,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
                         rotate('left');
                         var left = setInterval(function () {
                             moveLeft();
-                            if (isHit() || (tank.offsetLeft <= 30 )) {
+                            if(isHit()){
+                                isIntersects.left = 1;
+                                isIntersects.right = 0;
+                            }
+                            if( isIntersects.left = 1){
+                                clearInterval(top);
+                            }
+                            if ((tank.offsetLeft <= 30 )) {
                                 tank.style.left = parseInt(tank.style.left) + 1 + '%';
                                 clearInterval(left);
                                 direction = randomDirection();
@@ -260,7 +285,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
                         var right = setInterval(function () {
                             moveRight();
-                            if (isHit() || (tank.style.left >= '98.5%')) {
+                            if(isHit()){
+                                isIntersects.left = 0;
+                                isIntersects.right = 1;
+                            }
+                            if( isIntersects.left = 0){
+                                clearInterval(top);
+                            }
+                            if ((tank.style.left >= '97%')) {
                                 tank.style.left = parseInt(tank.style.left) - 1 + '%';
                                 clearInterval(right);
                                 direction = randomDirection();
